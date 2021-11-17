@@ -1,0 +1,21 @@
+{
+    "name": "auto_terminales",
+    "version": "1.0.0",
+    "description": "Automatización de proceso en terminales.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc -w",
+        "start": "nodemon build/index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/telefonica-desarrollo/auto_terminales.git"
+    },
+    "author": "Jesus",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/telefonica-desarrollo/auto_terminales/issues"
+    },
+    "homepage": "https://github.com/telefonica-desarrollo/auto_terminales#readme"
+}
