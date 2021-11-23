@@ -17,5 +17,10 @@
     "bugs": {
         "url": "https://github.com/telefonica-desarrollo/auto_terminales/issues"
     },
-    "homepage": "https://github.com/telefonica-desarrollo/auto_terminales#readme"
+    "homepage": "https://github.com/telefonica-desarrollo/auto_terminales#readme",
+    "dependencies": {
+        "exceljs": "^4.3.0",
+        "firebase": "^9.5.0",
+        "path": "^0.12.7"
+    }
 }
