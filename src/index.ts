@@ -32,15 +32,8 @@ woorkbook.xlsx.readFile(documento).then(function() {
             }
         })
     })
-
-    for(let terminal of tiendas[0].TERMINALES){
-      if(terminal.CANTIDAD > 10 ) console.log(terminal)
-    }
     
 })
-
-///////////////////////////////////////////////////////////////////// Promociones Prepago
-
 
 
 
