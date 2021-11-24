@@ -25,7 +25,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const EXcelJS = __importStar(require("exceljs"));
 const fs = __importStar(require("fs"));
 const path_1 = __importDefault(require("path"));
-const promocionesPg = __importStar(require("./promocionesPrepago"));
+const promocionesPg = __importStar(require("./controller/promocionesPrepago"));
 let data = [];
 let tiendas = JSON.parse(fs.readFileSync("./data/tiendas.txt", "utf8"));
 let woorkbook = new EXcelJS.Workbook();
