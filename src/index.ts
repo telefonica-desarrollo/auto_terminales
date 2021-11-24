@@ -1,7 +1,7 @@
 import * as EXcelJS from "exceljs"
 import * as fs from "fs"
 import path from "path"
-import * as promocionesPg from "./promocionesPrepago"
+import * as promocionesPg from "./controller/promocionesPrepago"
 
 let data: any = []
 let tiendas = JSON.parse(fs.readFileSync("./data/tiendas.txt", "utf8"));
