@@ -11,7 +11,7 @@ let i = 0
 
 export function promocionesPrepago(){
     let woorkbook = new EXcelJS.Workbook();
-    const documento = path.join(__dirname + "/docs/PREPAGO_201121.xlsx")
+    const documento = path.join(__dirname + "./../docs/PREPAGO_201121.xlsx")
     
     woorkbook.xlsx.readFile(documento).then(function() {
         var woorksheet = woorkbook.getWorksheet("Equipos en Promoción")
