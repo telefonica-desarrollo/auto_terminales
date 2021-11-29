@@ -18,6 +18,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -30,32 +39,34 @@ let data = [];
 let promociones;
 let i = 0;
 function promocionesPrepago() {
-    let woorkbook = new EXcelJS.Workbook();
-    const documento = path_1.default.join(__dirname + "./../docs/PREPAGO_201121.xlsx");
-    woorkbook.xlsx.readFile(documento).then(function () {
-        var woorksheet = woorkbook.getWorksheet("Equipos en Promoción");
-        woorksheet.eachRow((row, rowNumber) => {
-            if (rowNumber > 10) {
-                let fechaInicio = row.getCell(13).value;
-                fechaInicio = new Date(fechaInicio).getTime();
-                let fechaFinal = row.getCell(14).value;
-                fechaFinal = new Date(fechaFinal).getTime();
-                fechaFinal = fechaFinal + 25200000;
-                if (fechaInicio < fechaActual && fechaActual < fechaFinal) {
-                    i++;
-                    data = [];
-                    data.SKU = row.getCell(5).value;
-                    data.PVP = row.getCell(8).value;
-                    data.PORCENTAJE = row.getCell(12).value;
-                    data.rownumber = rowNumber;
-                    if (!promociones)
-                        promociones = [data];
-                    else
-                        promociones.push(data);
+    return __awaiter(this, void 0, void 0, function* () {
+        let woorkbook = new EXcelJS.Workbook();
+        const documento = path_1.default.join(__dirname + "./../docs/PREPAGO_201121.xlsx");
+        yield woorkbook.xlsx.readFile(documento).then(function () {
+            var woorksheet = woorkbook.getWorksheet("Equipos en Promoción");
+            woorksheet.eachRow((row, rowNumber) => {
+                if (rowNumber > 10) {
+                    let fechaInicio = row.getCell(13).value;
+                    fechaInicio = new Date(fechaInicio).getTime();
+                    let fechaFinal = row.getCell(14).value;
+                    fechaFinal = new Date(fechaFinal).getTime();
+                    fechaFinal = fechaFinal + 25200000;
+                    if (fechaInicio < fechaActual && fechaActual < fechaFinal) {
+                        i++;
+                        data = [];
+                        data.SKU = row.getCell(5).value;
+                        data.PVP = row.getCell(8).value;
+                        data.PORCENTAJE = row.getCell(12).value;
+                        data.rownumber = rowNumber;
+                        if (!promociones)
+                            promociones = [data];
+                        else
+                            promociones.push(data);
+                    }
                 }
-            }
+            });
         });
+        return promociones;
     });
-    return promociones;
 }
 exports.promocionesPrepago = promocionesPrepago;

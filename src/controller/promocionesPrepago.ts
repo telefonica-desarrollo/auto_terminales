@@ -1,4 +1,3 @@
-import * as fs from "fs"
 import * as EXcelJS from "exceljs"
 import path from "path"
 
@@ -9,11 +8,11 @@ let data: any = []
 let promociones: any;
 let i = 0
 
-export function promocionesPrepago(){
+export async function promocionesPrepago(){
     let woorkbook = new EXcelJS.Workbook();
     const documento = path.join(__dirname + "./../docs/PREPAGO_201121.xlsx")
     
-    woorkbook.xlsx.readFile(documento).then(function() {
+    await woorkbook.xlsx.readFile(documento).then(function() {
         var woorksheet = woorkbook.getWorksheet("Equipos en Promoción")
         woorksheet.eachRow((row, rowNumber)=>{
         
@@ -27,7 +26,7 @@ export function promocionesPrepago(){
                 fechaFinal = fechaFinal + 25200000                 
                 
                 if(fechaInicio < fechaActual && fechaActual < fechaFinal){
-                    i++
+                    i ++;
                     data = []
                     data.SKU = row.getCell(5).value;
                     data.PVP = row.getCell(8).value
@@ -40,6 +39,5 @@ export function promocionesPrepago(){
             }
         })
     })
-
-    return promociones;
+    return promociones
 }
