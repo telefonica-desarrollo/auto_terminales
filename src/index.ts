@@ -69,7 +69,7 @@ promocionesPg.promocionesPrepago().then( (data: any)=>{
                 })
             })
             console.log(contador);
-            fs.writeFile("./tienda.txt", JSON.stringify(tiendas[0]), ()=> {
+            fs.writeFile("./data/tienda.txt", JSON.stringify(tiendas[0]), ()=> {
                 console.log("hecho panas");
             })
             ///SUBIR DATA A FIRESTORE  
