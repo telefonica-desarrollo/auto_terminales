@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { collection, doc, getDocs, getFirestore} from "firebase/firestore";
+import { collection, doc, getDocs, getFirestore, setDoc, getDoc} from "firebase/firestore";
 import * as fs from "fs"
 
 const firebaseConfig = {
@@ -16,6 +16,29 @@ const db = getFirestore(app);
 const collection_data = collection(db, "Tiendas");
 let tiendasDB: any = []
 
+
+export async function subirData(tiendas: any){
+    tiendas.forEach((tienda: any)=> {
+        const docTienda = doc(collection_data, tienda.fid)
+        // modificar un documento
+        // setDoc(docTienda, tienda)
+        // console.log("A huevo papi");
+    })
+
+    // Leer info de un documento
+    // const dataSnapshot = await getDoc(docTienda)
+    // const data = dataSnapshot.data();
+    // console.log(data);
+
+}
+
+function eliminarData(tiendas: any){
+    const doc2 = doc(collection_data, tiendas[1].fid)
+    // tiendas[1].PROMOCIONES_PREPAGO = [];
+    // tiendas[1].PROMOCIONES_POSPAGO = [];
+    // setDoc(doc2, tiendas[1])
+}
+
 export async function obtenerTienda (){
     const tiendas = await getDocs(collection_data)
     tiendas.forEach((tienda)=> {
@@ -27,7 +50,7 @@ export async function obtenerTienda (){
         fs.writeFileSync("./tiendas.txt", JSON.stringify(tiendasDB))
         console.log("Guardado");
     } catch (error) {
-        console.log("Error xd");
+        console.log("Error");
     }
 
 }
