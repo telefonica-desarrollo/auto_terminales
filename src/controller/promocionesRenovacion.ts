@@ -8,9 +8,9 @@ let data: any = {}
 let promociones: any;
 let i = 0
 
-export async function promocionesPospago(){
+export async function promocionesRenovaciones(){
     let woorkbook = new EXcelJS.Workbook();
-    const documento = path.join(__dirname + "./../docs/POSPAGO_261121.xlsx")
+    const documento = path.join(__dirname + "./../docs/RENO_261121.xlsx")
     
     await woorkbook.xlsx.readFile(documento).then(function() {
         var woorksheet = woorkbook.getWorksheet("PROMOS NOVIEMBRE")
@@ -32,8 +32,7 @@ export async function promocionesPospago(){
                     data.PVP = row.getCell(9).value
                     data.PORCENTAJE = row.getCell(12).result
 
-                    // data.ROWNUMBER = rowNumber
-
+                    data.rownumber = rowNumber
                     i++;
 
                     if(!promociones) promociones = [data]
