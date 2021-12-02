@@ -48,7 +48,7 @@ function promocionesPrepago() {
                 if (rowNumber > 7) {
                     let fechaInicio = row.getCell(13).value;
                     fechaInicio = new Date(fechaInicio).getTime();
-                    let fechaFinal = row.getCell(14).value;
+                    let fechaFinal = row.getCell(13).value;
                     fechaFinal = new Date(fechaFinal).getTime();
                     fechaFinal = fechaFinal + 8.64e+7 + 2.52e+7;
                     if (fechaInicio < fechaActual && fechaActual < fechaFinal) {
