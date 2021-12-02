@@ -31,21 +31,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.promocionesPospago = void 0;
+exports.promocionesRenovaciones = void 0;
 const EXcelJS = __importStar(require("exceljs"));
 const path_1 = __importDefault(require("path"));
 let fechaActual = new Date().getTime();
 let data = {};
 let promociones;
 let i = 0;
-function promocionesPospago() {
+function promocionesRenovaciones() {
     return __awaiter(this, void 0, void 0, function* () {
         let woorkbook = new EXcelJS.Workbook();
-        const documento = path_1.default.join(__dirname + "./../docs/POSPAGO_021221.xlsx");
+        const documento = path_1.default.join(__dirname + "./../docs/RENO_021221.xlsx");
         yield woorkbook.xlsx.readFile(documento).then(function () {
-            var woorksheet = woorkbook.getWorksheet("PROMOCIONES DICIEMBRE");
+            var woorksheet = woorkbook.getWorksheet("PROMOS DICIEMBRE");
             woorksheet.eachRow((row, rowNumber) => {
-                if (rowNumber > 4) {
+                if (rowNumber > 1) {
                     let fechaInicio = row.getCell(15).value;
                     fechaInicio = new Date(fechaInicio).getTime();
                     let fechaFinal = row.getCell(16).value;
@@ -58,7 +58,7 @@ function promocionesPospago() {
                         data.MODELO = row.getCell(8).value;
                         data.PVP = row.getCell(9).value;
                         data.PORCENTAJE = row.getCell(12).result;
-                        // data.ROWNUMBER = rowNumber
+                        data.rownumber = rowNumber;
                         i++;
                         if (!promociones)
                             promociones = [data];
@@ -71,4 +71,4 @@ function promocionesPospago() {
         return promociones;
     });
 }
-exports.promocionesPospago = promocionesPospago;
+exports.promocionesRenovaciones = promocionesRenovaciones;
