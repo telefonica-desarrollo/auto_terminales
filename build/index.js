@@ -65,10 +65,10 @@ promocionesPg.promocionesPrepago().then((dataPrepago) => {
                                         if (!tienda.PROMOCIONES_PREPAGO)
                                             tienda.PROMOCIONES_PREPAGO = [];
                                         let dataPromocion = {};
-                                        dataPromocion.SKU = SKU;
+                                        // dataPromocion.SKU = SKU
                                         dataPromocion.CANTIDAD = row.getCell(8).value;
-                                        dataPromocion.PVP_PRE = promocion.PVP;
-                                        dataPromocion.PORCENTAJE_PRE = promocion.PORCENTAJE;
+                                        dataPromocion.PVP = promocion.PVP;
+                                        dataPromocion.PORCENTAJE = promocion.PORCENTAJE;
                                         dataPromocion.MODELO = promocion.MODELO;
                                         dataPromocion.MARCA = promocion.MARCA;
                                         dataPromocion.row_PRE = promocion.ROWNUMBER;
@@ -82,13 +82,14 @@ promocionesPg.promocionesPrepago().then((dataPrepago) => {
                                         if (!tienda.PROMOCIONES_POSPAGO)
                                             tienda.PROMOCIONES_POSPAGO = [];
                                         let dataPromocion_Pos = {};
-                                        dataPromocion_Pos.SKU = SKU;
+                                        // dataPromocion_Pos.SKU = SKU
                                         dataPromocion_Pos.CANTIDAD = row.getCell(8).value;
                                         dataPromocion_Pos.PVP = promocionPos.PVP;
-                                        dataPromocion_Pos.PORCENTAJE_POS = promocionPos.PORCENTAJE;
+                                        dataPromocion_Pos.PORCENTAJE = promocionPos.PORCENTAJE;
                                         dataPromocion_Pos.MODELO = promocionPos.MODELO;
                                         dataPromocion_Pos.MARCA = promocionPos.MARCA;
                                         dataPromocion_Pos.row = promocionPos.ROWNUMBER;
+                                        contador++;
                                         tienda.PROMOCIONES_POSPAGO.push(dataPromocion_Pos);
                                     }
                                 });
@@ -98,6 +99,7 @@ promocionesPg.promocionesPrepago().then((dataPrepago) => {
                                         if (!tienda.PROMOCIONES_RENOVACIONES)
                                             tienda.PROMOCIONES_RENOVACIONES = [];
                                         let dataPromocion_Ren = {};
+                                        dataPromocion_Ren.CANTIDAD = row.getCell(8).value;
                                         dataPromocion_Ren.PVP = promocionRen.PVP;
                                         dataPromocion_Ren.PORCENTAJE = promocionRen.PORCENTAJE;
                                         dataPromocion_Ren.MODELO = promocionRen.MODELO;
