@@ -9,7 +9,7 @@ class IndexRoutes {
     }
     config() {
         //Obtener <------------------------------------------------------------------------------------
-        this.router.get("/", index_controller_1.indexController.obtenerTiendas);
+        this.router.post("/", index_controller_1.indexController.validarUsuario);
     }
 }
 const indexRoutes = new IndexRoutes();

@@ -11,7 +11,7 @@ class IndexRoutes{
     config(){
 
         //Obtener <------------------------------------------------------------------------------------
-            this.router.get("/", indexController.obtenerTiendas)
+            this.router.post("/", indexController.validarUsuario)
     }
 }
 
