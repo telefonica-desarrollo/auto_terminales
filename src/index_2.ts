@@ -1,14 +1,24 @@
 import express, {Application} from "express";
+import morgan from "morgan";
 import indexRoutes from "./routes/index.routes";
+
+// import {con} from "./database"
 
 class Server{
     public app: Application;
 
     constructor(){
+        // con
         this.app = express()
+        this.config()
         this.routes()
     }
-    routes(){
+    config(): void{
+        this.app.use(morgan("dev"))
+        this.app.use(express.json({ limit: '10mb' }));
+        this.app.use(express.urlencoded({ limit: '10mb' }))
+    }
+    routes(): void{
         this.app.use("/", indexRoutes)
     }
     start(){
