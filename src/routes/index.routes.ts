@@ -9,9 +9,11 @@ class IndexRoutes{
     }
 
     config(){
-
+        this.router.post("/login", indexController.validarUsuario)
+        
         //Obtener <------------------------------------------------------------------------------------
-            this.router.post("/", indexController.validarUsuario)
+        this.router.get("/obtener/tiendas", indexController.obtenerTiendas)
+        this.router.post("/obtener/inventario", indexController.obtenerInventario)
     }
 }
 

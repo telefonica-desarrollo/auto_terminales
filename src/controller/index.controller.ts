@@ -7,11 +7,6 @@ class IndexController{
         con;
     }
 
-    async obtenerTiendas(req: Request, res: Response){
-        await con.query("Select * from TIENDAS", (err, result, fields) => {
-            res.json(result)
-        });
-    }
     async validarUsuario(req: Request, res: Response){
         const data: any= req.body;
         console.log(data);
@@ -28,9 +23,45 @@ class IndexController{
                 console.log(error);
             }
         })
-
     }
+    async obtenerTiendas(req: Request, res: Response){
+        await con.query("Select * from TIENDAS", (err, result, fields) => {
+            res.json(result)
+        });
+    }
+    async obtenerInventario(req: Request, res: Response){
+        const data: any = req.body;
+        console.log(data)
+        const sql = "Select * from INVENTARIOS where Id_Tienda = ?"
+        await con.query(sql, [data.id_tienda], (err, result) => {
+            try {
+                if(err) throw "Peticion no valida"
+                res.json(result)
+            } catch (error) {
+                console.log(error);
+            }
+        })
+    }
+    async obtenerPromocionPrepago(req: Request, res: Response){
+        const data: any = req.body;
+        console.log(data);
+        
+        const sql= "Seles * from PROMOCIONES_PREPAGO where Id_Tienda = ?"
+        await con.query(sql, [data.id_tienda], (err, result) => {
+            try {
+                if(err) throw "Peticion no valida"
+                res.json(result)
+            } catch (error) {
+                console.log(error);                
+            }
+        })
+    }
+    async agregarTienda(req: Request, res: Response){
+        const data: any = req.body;
+        console.log(data)
 
+        const sql = "Insert into TIENDAS ()"
+    }
 }
 
 export const indexController = new IndexController();
