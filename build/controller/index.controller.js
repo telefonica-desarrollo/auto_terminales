@@ -19,13 +19,6 @@ class IndexController {
         this.tiendas = [];
         database_1.default;
     }
-    obtenerTiendas(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query("Select * from TIENDAS", (err, result, fields) => {
-                res.json(result);
-            });
-        });
-    }
     validarUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const data = req.body;
@@ -44,6 +37,54 @@ class IndexController {
                     console.log(error);
                 }
             });
+        });
+    }
+    obtenerTiendas(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield database_1.default.query("Select * from TIENDAS", (err, result, fields) => {
+                res.json(result);
+            });
+        });
+    }
+    obtenerInventario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = req.body;
+            console.log(data);
+            const sql = "Select * from INVENTARIOS where Id_Tienda = ?";
+            yield database_1.default.query(sql, [data.id_tienda], (err, result) => {
+                try {
+                    if (err)
+                        throw "Peticion no valida";
+                    res.json(result);
+                }
+                catch (error) {
+                    console.log(error);
+                }
+            });
+        });
+    }
+    obtenerPromocionPrepago(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = req.body;
+            console.log(data);
+            const sql = "Seles * from PROMOCIONES_PREPAGO where Id_Tienda = ?";
+            yield database_1.default.query(sql, [data.id_tienda], (err, result) => {
+                try {
+                    if (err)
+                        throw "Peticion no valida";
+                    res.json(result);
+                }
+                catch (error) {
+                    console.log(error);
+                }
+            });
+        });
+    }
+    agregarTienda(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = req.body;
+            console.log(data);
+            const sql = "Insert into TIENDAS ()";
         });
     }
 }
