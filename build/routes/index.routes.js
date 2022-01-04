@@ -2,20 +2,25 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const index_controller_1 = require("../controller/index.controller");
+const usuario_controller_1 = require("../controller/usuario.controller");
+const tienda_controller_1 = require("../controller/tienda.controller");
 class IndexRoutes {
     constructor() {
         this.router = (0, express_1.Router)();
         this.config();
     }
     config() {
-        this.router.post("/login", index_controller_1.indexController.validarUsuario);
+        //Usuarios
+        this.router.post("/login", usuario_controller_1.usuarioController.validarUsuario);
+        this.router.get("/obtener/usuarios", usuario_controller_1.usuarioController.obtenerUsuarios);
+        this.router.delete("/eliminar/usuarios", usuario_controller_1.usuarioController.eliminarUsuarios);
+        this.router.post("/agregar/usuario", usuario_controller_1.usuarioController.agregarUsuario);
+        //Tiendas
+        this.router.get("/obtener/tiendas", tienda_controller_1.tiendaController.obtenerTiendas);
+        this.router.post("/agregar/tienda", tienda_controller_1.tiendaController.agregarTienda);
+        this.router.delete("/eliminar/tiendas", tienda_controller_1.tiendaController.eliminarTienda);
         //Obtener <------------------------------------------------------------------------------------
-        this.router.get("/obtener/tiendas", index_controller_1.indexController.obtenerTiendas);
         this.router.post("/obtener/inventario", index_controller_1.indexController.obtenerInventario);
-        this.router.get("/obtener/usuarios", index_controller_1.indexController.obtenerUsuarios);
-        this.router.post("/agregar/tienda", index_controller_1.indexController.agregarTienda);
-        this.router.post("/", index_controller_1.indexController.agregarUsuario);
-        this.router.delete("/eliminar/usuarios", index_controller_1.indexController.eliminarUsuarios);
     }
 }
 const indexRoutes = new IndexRoutes();

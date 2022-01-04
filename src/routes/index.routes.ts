@@ -1,5 +1,8 @@
 import {Router} from 'express';
 import {indexController} from "../controller/index.controller"
+import {usuarioController} from "../controller/usuario.controller"
+import {tiendaController} from "../controller/tienda.controller"
+
 
 class IndexRoutes{
     public router: Router = Router();
@@ -9,17 +12,23 @@ class IndexRoutes{
     }
 
     config(){
-        this.router.post("/login", indexController.validarUsuario)
+        //Usuarios
+        this.router.post("/login", usuarioController.validarUsuario)
+        this.router.get("/obtener/usuarios", usuarioController.obtenerUsuarios)
+        this.router.delete("/eliminar/usuarios", usuarioController.eliminarUsuarios)
+        this.router.post("/agregar/usuario", usuarioController.agregarUsuario)
         
+        //Tiendas
+        this.router.get("/obtener/tiendas", tiendaController.obtenerTiendas)
+        this.router.post("/agregar/tienda", tiendaController.agregarTienda)
+        this.router.delete("/eliminar/tiendas", tiendaController.eliminarTienda)
+
+
         //Obtener <------------------------------------------------------------------------------------
-        this.router.get("/obtener/tiendas", indexController.obtenerTiendas)
         this.router.post("/obtener/inventario", indexController.obtenerInventario)
-        this.router.get("/obtener/usuarios", indexController.obtenerUsuarios)
 
-        this.router.post("/agregar/tienda", indexController.agregarTienda)
-        this.router.post("/", indexController.agregarUsuario)
+        
 
-        this.router.delete("/eliminar/usuarios", indexController.eliminarUsuarios)
     }
 }
 
