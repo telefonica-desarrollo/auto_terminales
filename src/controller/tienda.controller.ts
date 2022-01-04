@@ -26,6 +26,7 @@ class TiendaController{
         const sql = "Delete from TIENDAS"
         const sql2 = "ALTER TABLE TIENDAS AUTO_INCREMENT = 1"
         await con.query(sql, (err, result) => {
+            if(err) res.json(err)
             res.json(result)
         }) //Eliminamos Usuarios
         await con.query(sql2, (err, result) => {

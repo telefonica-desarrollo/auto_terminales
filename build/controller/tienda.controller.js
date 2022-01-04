@@ -44,6 +44,8 @@ class TiendaController {
             const sql = "Delete from TIENDAS";
             const sql2 = "ALTER TABLE TIENDAS AUTO_INCREMENT = 1";
             yield database_1.default.query(sql, (err, result) => {
+                if (err)
+                    res.json(err);
                 res.json(result);
             }); //Eliminamos Usuarios
             yield database_1.default.query(sql2, (err, result) => {
