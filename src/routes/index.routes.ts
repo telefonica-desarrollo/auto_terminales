@@ -14,6 +14,12 @@ class IndexRoutes{
         //Obtener <------------------------------------------------------------------------------------
         this.router.get("/obtener/tiendas", indexController.obtenerTiendas)
         this.router.post("/obtener/inventario", indexController.obtenerInventario)
+        this.router.get("/obtener/usuarios", indexController.obtenerUsuarios)
+
+        this.router.post("/agregar/tienda", indexController.agregarTienda)
+        this.router.post("/", indexController.agregarUsuario)
+
+        this.router.delete("/eliminar/usuarios", indexController.eliminarUsuarios)
     }
 }
 

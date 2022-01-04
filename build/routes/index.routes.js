@@ -12,6 +12,10 @@ class IndexRoutes {
         //Obtener <------------------------------------------------------------------------------------
         this.router.get("/obtener/tiendas", index_controller_1.indexController.obtenerTiendas);
         this.router.post("/obtener/inventario", index_controller_1.indexController.obtenerInventario);
+        this.router.get("/obtener/usuarios", index_controller_1.indexController.obtenerUsuarios);
+        this.router.post("/agregar/tienda", index_controller_1.indexController.agregarTienda);
+        this.router.post("/", index_controller_1.indexController.agregarUsuario);
+        this.router.delete("/eliminar/usuarios", index_controller_1.indexController.eliminarUsuarios);
     }
 }
 const indexRoutes = new IndexRoutes();

@@ -46,6 +46,13 @@ class IndexController {
             });
         });
     }
+    obtenerUsuarios(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield database_1.default.query("Select * from USUARIOS", (err, result, fields) => {
+                res.json(result);
+            });
+        });
+    }
     obtenerInventario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const data = req.body;
@@ -67,7 +74,7 @@ class IndexController {
         return __awaiter(this, void 0, void 0, function* () {
             const data = req.body;
             console.log(data);
-            const sql = "Seles * from PROMOCIONES_PREPAGO where Id_Tienda = ?";
+            const sql = "Select * from PROMOCIONES_PREPAGO where Id_Tienda = ?";
             yield database_1.default.query(sql, [data.id_tienda], (err, result) => {
                 try {
                     if (err)
@@ -84,7 +91,62 @@ class IndexController {
         return __awaiter(this, void 0, void 0, function* () {
             const data = req.body;
             console.log(data);
-            const sql = "Insert into TIENDAS ()";
+            const sql = "Insert into TIENDAS (Nombre_Tienda, Sap, Region, Territorio, Idpdv) VALUES (?,?,?,?,?)";
+            yield database_1.default.query(sql, [data.NOMBRE, data.SAP, data.REGION, data.TERRITORIO, data.IDPDV], (err, result) => {
+                try {
+                    if (err)
+                        throw err;
+                    res.json(result);
+                }
+                catch (error) {
+                    console.log(error);
+                }
+            });
+        });
+    }
+    agregarUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = req.body;
+            console.log(data);
+            let id_tienda;
+            const sqlTienda = "Select Id_Tienda from TIENDAS where Idpdv = ?";
+            const sql = "Insert into USUARIOS (Usuario, Password, Id_Tienda) values (?,?,?)";
+            yield database_1.default.query(sqlTienda, [data.IDPDV], (err, result) => __awaiter(this, void 0, void 0, function* () {
+                try {
+                    if (err)
+                        throw err;
+                    id_tienda = result[0].Id_Tienda;
+                    yield database_1.default.query(sql, [data.USUARIO, data.PASSWORD, id_tienda], (err, result2) => {
+                        try {
+                            if (err)
+                                throw err;
+                            res.json(result2);
+                        }
+                        catch (error) {
+                            console.log(error);
+                        }
+                    });
+                }
+                catch (error) {
+                    console.log(error);
+                }
+            }));
+        });
+    }
+    eliminarTiendas(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+        });
+    }
+    eliminarUsuarios(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const sql = "Delete from USUARIOS;";
+            const sql2 = "ALTER TABLE USUARIOS AUTO_INCREMENT = 1";
+            yield database_1.default.query(sql, (err, result) => {
+                console.log(result);
+            }); //Eliminamos Usuarios
+            yield database_1.default.query(sql2, (err, result) => {
+                res.json(result);
+            }); //Inicializamos incrementos en 1
         });
     }
 }
