@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
-const index_controller_1 = require("../controller/index.controller");
 const usuario_controller_1 = require("../controller/usuario.controller");
 const tienda_controller_1 = require("../controller/tienda.controller");
+const terminal_controller_1 = require("../controller/terminal.controller");
+const promociones_controller_1 = require("../controller/promociones.controller");
 class IndexRoutes {
     constructor() {
         this.router = (0, express_1.Router)();
@@ -19,8 +20,12 @@ class IndexRoutes {
         this.router.get("/obtener/tiendas", tienda_controller_1.tiendaController.obtenerTiendas);
         this.router.post("/agregar/tienda", tienda_controller_1.tiendaController.agregarTienda);
         this.router.delete("/eliminar/tiendas", tienda_controller_1.tiendaController.eliminarTienda);
-        //Obtener <------------------------------------------------------------------------------------
-        this.router.post("/obtener/inventario", index_controller_1.indexController.obtenerInventario);
+        //Terminales
+        this.router.get("/obtener/terminales", terminal_controller_1.terminalController.obtenerTerminales);
+        this.router.post("/agregar/terminal", terminal_controller_1.terminalController.agregarTerminal);
+        //Promociones
+        //          ----------------Prepago
+        this.router.post("/obtener/promociones", promociones_controller_1.promocionController.obtenerPromociones);
     }
 }
 const indexRoutes = new IndexRoutes();

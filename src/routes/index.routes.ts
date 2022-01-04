@@ -2,6 +2,8 @@ import {Router} from 'express';
 import {indexController} from "../controller/index.controller"
 import {usuarioController} from "../controller/usuario.controller"
 import {tiendaController} from "../controller/tienda.controller"
+import {terminalController} from "../controller/terminal.controller"
+import {promocionController} from "../controller/promociones.controller"
 
 
 class IndexRoutes{
@@ -23,9 +25,15 @@ class IndexRoutes{
         this.router.post("/agregar/tienda", tiendaController.agregarTienda)
         this.router.delete("/eliminar/tiendas", tiendaController.eliminarTienda)
 
+        //Terminales
+        this.router.get("/obtener/terminales", terminalController.obtenerTerminales)
+        this.router.post("/agregar/terminal", terminalController.agregarTerminal)
 
-        //Obtener <------------------------------------------------------------------------------------
-        this.router.post("/obtener/inventario", indexController.obtenerInventario)
+        //Promociones
+        //          ----------------Prepago
+        this.router.post("/obtener/promociones", promocionController.obtenerPromociones)
+
+       
 
         
 
