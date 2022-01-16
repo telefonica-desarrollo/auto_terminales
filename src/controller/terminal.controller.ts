@@ -23,6 +23,10 @@ class TerminalController{
             }
         })
     }
+    async obtenerInventario(req: Request, res: Response){
+        //Aqui agregar el código que hace referencia al inventario por 
+        //punto de venta respecto a las promociones que existen.
+    }
 
     /////////////////////////////////////////////
     async actualizarPayjoy(req: Request, res: Response){
