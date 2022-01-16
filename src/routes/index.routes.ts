@@ -31,7 +31,7 @@ class IndexRoutes{
 
         //Promociones
         //          ----------------Prepago
-        this.router.post("/obtener/promociones", promocionController.obtenerPromociones)
+        this.router.post("/obtener/promociones", promocionController.obtenerPromocionesPrepago2)
 
        
 
