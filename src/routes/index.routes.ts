@@ -33,7 +33,9 @@ class IndexRoutes{
         this.router.post("/obtener/promociones/prepago", promocionController.obtenerPromocionesPrepago)
         this.router.post("/obtener/promociones/pospago", promocionController.obtenerPromocionesPospago)
         this.router.post("/obtener/promociones/renovacion", promocionController.obtenerPromocionesRenovacion)
-        
+        this.router.post("/agregar/promociones/prepago", promocionController.agregarPromocionesPrepago)
+        this.router.post("/agregar/promociones/pospago", promocionController.agregarPromocionesPospago)
+        this.router.post("/agregar/promociones/renovacion", promocionController.agregarPromocionesRenovacion)
 
 
        

@@ -27,6 +27,9 @@ class IndexRoutes {
         this.router.post("/obtener/promociones/prepago", promociones_controller_1.promocionController.obtenerPromocionesPrepago);
         this.router.post("/obtener/promociones/pospago", promociones_controller_1.promocionController.obtenerPromocionesPospago);
         this.router.post("/obtener/promociones/renovacion", promociones_controller_1.promocionController.obtenerPromocionesRenovacion);
+        this.router.post("/agregar/promociones/prepago", promociones_controller_1.promocionController.agregarPromocionesPrepago);
+        this.router.post("/agregar/promociones/pospago", promociones_controller_1.promocionController.agregarPromocionesPospago);
+        this.router.post("/agregar/promociones/renovacion", promociones_controller_1.promocionController.agregarPromocionesRenovacion);
     }
 }
 const indexRoutes = new IndexRoutes();
