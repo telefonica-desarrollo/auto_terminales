@@ -20,12 +20,12 @@ class UsuarioController {
             const data = req.body;
             console.log(data);
             const sql = "Select * from USUARIOS where Usuario = ? && Password = ?";
-            yield database_1.default.query(sql, [data.usuario, data.password], (err, result) => {
+            yield database_1.default.query(sql, [data.Usuario, data.Password], (err, result) => {
                 try {
                     if (err)
-                        throw "Peticion no valida";
+                        throw "Peticion no validaa";
                     if (result.length > 0)
-                        res.json(true);
+                        res.json(result);
                     else
                         res.json(false);
                 }

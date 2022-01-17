@@ -8,11 +8,11 @@ class UsuarioController{
         console.log(data);
         
         const sql = "Select * from USUARIOS where Usuario = ? && Password = ?"
-        await con.query(sql , [data.usuario, data.password] , (err, result) => {
+        await con.query(sql , [data.Usuario, data.Password] , (err, result) => {
             try {
-                if(err) throw "Peticion no valida";
+                if(err) throw "Peticion no validaa";
 
-                if(result.length > 0) res.json(true)
+                if(result.length > 0) res.json(result)
                 else res.json(false)     
 
             } catch (error) {

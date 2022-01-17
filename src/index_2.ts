@@ -1,5 +1,6 @@
 import express, {Application} from "express";
 import morgan from "morgan";
+import cors from "cors"
 import indexRoutes from "./routes/index.routes";
 
 // import {con} from "./database"
@@ -17,6 +18,7 @@ class Server{
         this.app.use(morgan("dev"))
         this.app.use(express.json({ limit: '10mb' }));
         this.app.use(express.urlencoded({ limit: '10mb' }))
+        this.app.use(cors())
     }
     routes(): void{
         this.app.use("/", indexRoutes)
