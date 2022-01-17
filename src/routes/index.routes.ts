@@ -30,10 +30,11 @@ class IndexRoutes{
         this.router.post("/agregar/terminal", terminalController.agregarTerminal)
 
         //Promociones
-        //          ----------------Prepago
         this.router.post("/obtener/promociones/prepago", promocionController.obtenerPromocionesPrepago)
         this.router.post("/obtener/promociones/pospago", promocionController.obtenerPromocionesPospago)
         this.router.post("/obtener/promociones/renovacion", promocionController.obtenerPromocionesRenovacion)
+        
+
 
        
 

@@ -24,7 +24,6 @@ class IndexRoutes {
         this.router.get("/obtener/terminales", terminales_controller_1.terminalController.obtenerTerminales);
         this.router.post("/agregar/terminal", terminales_controller_1.terminalController.agregarTerminal);
         //Promociones
-        //          ----------------Prepago
         this.router.post("/obtener/promociones/prepago", promociones_controller_1.promocionController.obtenerPromocionesPrepago);
         this.router.post("/obtener/promociones/pospago", promociones_controller_1.promocionController.obtenerPromocionesPospago);
         this.router.post("/obtener/promociones/renovacion", promociones_controller_1.promocionController.obtenerPromocionesRenovacion);
