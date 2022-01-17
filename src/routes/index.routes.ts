@@ -2,7 +2,7 @@ import {Router} from 'express';
 import {indexController} from "../controller/index.controller"
 import {usuarioController} from "../controller/usuario.controller"
 import {tiendaController} from "../controller/tienda.controller"
-import {terminalController} from "../controller/terminal.controller"
+import {terminalController} from "../controller/terminales.controller"
 import {promocionController} from "../controller/promociones.controller"
 
 

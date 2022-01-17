@@ -22,13 +22,40 @@ class TerminalController{
                 console.log(error);
             }
         })
+    } //Catalgo de Terminales
+    async agregarInventario(req: Request, res: Response){
+        const data: any = req.body;
+        console.log(data)
+
+        const sql= "Insert into INVENTARIO (Cantidad, Id_Tienda, Id_Terminal) VALUES (?,?,?)"
+        await con.query(sql, [data.CANTIDAD, data.ID_TIENDA, data. ID_TERMINAL], (err, result) => {
+            try {
+                if(err) throw err
+                res.json(result)
+            } catch (error) {
+                console.log(error);
+            }
+        })
     }
     async obtenerInventario(req: Request, res: Response){
-        //Aqui agregar el código que hace referencia al inventario por 
-        //punto de venta respecto a las promociones que existen.
+        const data: any= req.body
+        console.log(data)
+        const sql = "Select * from INVENTARIO where Id_Tienda = ?"
+        await con.query(sql, [data.ID_TIENDA], (err, result) =>{
+            try {
+                if(err) throw err
+                res.json(result)
+            } catch (error) {
+                console.log(error) 
+            }
+        })
+
+    
+    
+    
     }
 
-    /////////////////////////////////////////////
+
     async actualizarPayjoy(req: Request, res: Response){
 
     }

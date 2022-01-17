@@ -15,10 +15,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.promocionController = void 0;
 const database_1 = __importDefault(require("../database"));
 class PromocionController {
-    obtenerPromociones(req, res) {
+    obtenerPromocionesPrepago(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const data = req.body;
             const sql = "Select * FROM PROMOCIONES_PREPAGO where Fecha_Inicio <= ? && Fecha_Final >= ?;";
+            yield database_1.default.query(sql, [data.FECHA, data.FECHA], (err, result, fields) => {
+                if (err)
+                    res.json(err);
+                res.json(result);
+            });
+        });
+    }
+    obtenerPromocionesPospago(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = req.body;
+            const sql = "Select * FROM PROMOCIONES_POSPAGO where Fecha_Inicio <= ? && Fecha_Final >= ?;";
+            yield database_1.default.query(sql, [data.FECHA, data.FECHA], (err, result, fields) => {
+                if (err)
+                    res.json(err);
+                res.json(result);
+            });
+        });
+    }
+    obtenerPromocionesRenovacion(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = req.body;
+            const sql = "Select * FROM PROMOCIONES_RENOVACION where Fecha_Inicio <= ? && Fecha_Final >= ?;";
             yield database_1.default.query(sql, [data.FECHA, data.FECHA], (err, result, fields) => {
                 if (err)
                     res.json(err);
