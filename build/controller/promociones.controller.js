@@ -48,5 +48,56 @@ class PromocionController {
             });
         });
     }
+    agregarPromocionesPrepago(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = req.body;
+            console.log(data);
+            const sql = "Insert into PROMOCIONES_PREPAGO values (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,?,?,?)";
+            yield database_1.default.query(sql, [data.PVP, data.DESCUENTO, data.ID_TERMINAL, data.FECHA_INICIO, data.FECHA_FINAL], (err, result) => {
+                try {
+                    if (err)
+                        throw err;
+                    res.json(result);
+                }
+                catch (error) {
+                    console.log(error);
+                }
+            });
+        });
+    }
+    agregarPromocionesPospago(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = req.body;
+            console.log(data);
+            const sql = "Insert into PROMOCIONES_POSPAGO values (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,?,?,?)";
+            yield database_1.default.query(sql, [data.PVP, data.DESCUENTO, data.ID_TERMINAL, data.FECHA_INICIO, data.FECHA_FINAL], (err, result) => {
+                try {
+                    if (err)
+                        throw err;
+                    res.json(result);
+                }
+                catch (error) {
+                    console.log(error);
+                }
+            });
+        });
+    }
+    agregarPromocionesRenovacion(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = req.body;
+            console.log(data);
+            const sql = "Insert into PROMOCIONES_RENOVACION values (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,?,?,?)";
+            yield database_1.default.query(sql, [data.PVP, data.DESCUENTO, data.ID_TERMINAL, data.FECHA_INICIO, data.FECHA_FINAL], (err, result) => {
+                try {
+                    if (err)
+                        throw err;
+                    res.json(result);
+                }
+                catch (error) {
+                    console.log(error);
+                }
+            });
+        });
+    }
 }
 exports.promocionController = new PromocionController();
