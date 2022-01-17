@@ -22,7 +22,9 @@ class TerminalController{
                 console.log(error);
             }
         })
-    } //Catalgo de Terminales
+    }
+
+
     async agregarInventario(req: Request, res: Response){
         const data: any = req.body;
         console.log(data)
