@@ -2,6 +2,9 @@ import { Request, Response } from 'express';
 import con from "../database" 
 
 class UsuarioController{
+    constructor(){
+        
+    }
     
     async validarUsuario(req: Request, res: Response){
         const data: any= req.body;
@@ -11,7 +14,6 @@ class UsuarioController{
         await con.query(sql , [data.Usuario, data.Password] , (err, result) => {
             try {
                 if(err) throw "Peticion no validaa";
-
                 if(result.length > 0) res.json(result)
                 else res.json(false)     
 
@@ -23,6 +25,20 @@ class UsuarioController{
     async obtenerUsuarios(req: Request, res: Response){
         await con.query("Select * from USUARIOS", (err, result, fields) => {
             res.json(result)
+        });
+    }
+    async obtenerUsuario(req: Request, res: Response){
+        const data: any  = req.body;
+        console.log(data);
+        
+        const sql = "Select * from USUARIOS u join TIENDAS t on u.Id_Tienda=t.Id_Tienda and  u.Usuario = ?";
+        await con.query(sql, [data.usuario],  (err, result, fields) => {
+            try {
+                if(err) throw err
+                res.json(result[0]);
+            } catch (error) {
+                console.log(err);
+            }
         });
     }
     async agregarUsuario(req: Request, res:Response){

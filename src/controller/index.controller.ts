@@ -4,7 +4,7 @@ import con from "../database"
 class IndexController{
     tiendas: any = []; 
     constructor(){
-        con;
+        con
     }
 
     async obtenerInventario(req: Request, res: Response){

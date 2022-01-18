@@ -15,6 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.usuarioController = void 0;
 const database_1 = __importDefault(require("../database"));
 class UsuarioController {
+    constructor() {
+    }
     validarUsuario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const data = req.body;
@@ -39,6 +41,23 @@ class UsuarioController {
         return __awaiter(this, void 0, void 0, function* () {
             yield database_1.default.query("Select * from USUARIOS", (err, result, fields) => {
                 res.json(result);
+            });
+        });
+    }
+    obtenerUsuario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const data = req.body;
+            console.log(data);
+            const sql = "Select * from USUARIOS u join TIENDAS t on u.Id_Tienda=t.Id_Tienda and  u.Usuario = ?";
+            yield database_1.default.query(sql, [data.usuario], (err, result, fields) => {
+                try {
+                    if (err)
+                        throw err;
+                    res.json(result[0]);
+                }
+                catch (error) {
+                    console.log(err);
+                }
             });
         });
     }

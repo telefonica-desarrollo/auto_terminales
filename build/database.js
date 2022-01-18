@@ -6,15 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mysql_1 = __importDefault(require("mysql"));
 const con = mysql_1.default.createConnection({
     host: "10.140.110.15",
-    port: 3306,
     user: "temm",
     password: "t3kn312021",
-    database: "terminales"
+    database: "terminales",
+    port: 3306,
 });
 con.connect((err) => {
     try {
         if (err)
-            throw "Error de Conexion";
+            throw err;
         console.log("Base de datos conectada");
     }
     catch (error) {

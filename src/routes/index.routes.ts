@@ -17,6 +17,7 @@ class IndexRoutes{
         //Usuarios
         this.router.post("/login", usuarioController.validarUsuario)
         this.router.get("/obtener/usuarios", usuarioController.obtenerUsuarios)
+        this.router.post("/obtener/usuario", usuarioController.obtenerUsuario)
         this.router.delete("/eliminar/usuarios", usuarioController.eliminarUsuarios)
         this.router.post("/agregar/usuario", usuarioController.agregarUsuario)
         
