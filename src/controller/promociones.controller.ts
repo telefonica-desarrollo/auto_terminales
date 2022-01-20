@@ -98,8 +98,8 @@ class PromocionController{
        await con.query("DELETE from PROMOCIONES_POSPAGO", (err, result) => {})
        await con.query("ALTER TABLE PROMOCIONES_POSPAGO AUTO_INCREMENT = 1", (err,result)=>{})
        res.json(true)
-   }
-   async eliminarPromocionesRenovacion(req:Request, res: Response){
+    }
+    async eliminarPromocionesRenovacion(req:Request, res: Response){
          //Borramos todas las promociones
         await con.query("DELETE from PROMOCIONES_RENOVACION", (err, result) => {})
         await con.query("ALTER TABLE PROMOCIONES_RENOVACION AUTO_INCREMENT = 1", (err,result)=>{})
