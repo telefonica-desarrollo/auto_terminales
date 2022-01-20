@@ -41,6 +41,7 @@ class UsuarioController{
             }
         });
     }
+    
     async agregarUsuario(req: Request, res:Response){
         const data: any = req.body;
         console.log(data);
