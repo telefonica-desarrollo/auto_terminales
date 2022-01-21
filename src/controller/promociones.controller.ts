@@ -3,7 +3,7 @@ import con from "../database"
 
 class PromocionController{
     
-    async obtenerPromocionesPrepago(req: Request, res: Response){
+    async obtenerPromocionesPrepago(req: Request, res: Response){npm
         const data: any = req.body;
 
         const sql = "Select * FROM PROMOCIONES_PREPAGO where Fecha_Inicio <= ? && Fecha_Final >= ?;"

@@ -17,6 +17,7 @@ const database_1 = __importDefault(require("../database"));
 class PromocionController {
     obtenerPromocionesPrepago(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            npm;
             const data = req.body;
             const sql = "Select * FROM PROMOCIONES_PREPAGO where Fecha_Inicio <= ? && Fecha_Final >= ?;";
             yield database_1.default.query(sql, [data.FECHA, data.FECHA], (err, result, fields) => {

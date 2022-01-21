@@ -24,6 +24,7 @@ class IndexRoutes{
         //Tiendas
         this.router.get("/obtener/tiendas", tiendaController.obtenerTiendas)
         this.router.post("/agregar/tienda", tiendaController.agregarTienda)
+        this.router.post("/modificar/tienda", tiendaController.modificarTienda)
         this.router.delete("/eliminar/tiendas", tiendaController.eliminarTienda)
 
         //Terminales
