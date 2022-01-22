@@ -31,6 +31,11 @@ class IndexRoutes{
         this.router.get("/obtener/terminales", terminalController.obtenerTerminales)
         this.router.post("/agregar/terminal", terminalController.agregarTerminal)
 
+        this.router.post("/obtener/inventario", terminalController.obtenerInventario)
+        this.router.post("/agregar/inventario", terminalController.agregarInventario)
+        this.router.delete("/eliminar/inventario", terminalController.eliminarInventario)
+        
+
         //Promociones
         this.router.post("/obtener/promociones/prepago", promocionController.obtenerPromocionesPrepago)
         this.router.post("/obtener/promociones/pospago", promocionController.obtenerPromocionesPospago)
@@ -41,7 +46,7 @@ class IndexRoutes{
         this.router.delete("/eliminar/promociones/prepago", promocionController.eliminarPromocionesPrepago)
         this.router.delete("/eliminar/promociones/pospago", promocionController.eliminarPromocionesPospago)
         this.router.delete("/eliminar/promociones/renovacion", promocionController.eliminarPromocionesRenovacion)
-        
+         
 
        
 

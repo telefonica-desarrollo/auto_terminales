@@ -18,8 +18,16 @@ class TerminalController {
     //Catalogo de Terminales
     obtenerTerminales(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("Obtener Terminales");
             yield database_1.default.query("Select * from TERMINALES", (err, result, fields) => {
-                res.json(result);
+                try {
+                    if (err)
+                        throw err;
+                    res.json(result);
+                }
+                catch (error) {
+                    console.log(error);
+                }
             });
         });
     }
@@ -32,7 +40,7 @@ class TerminalController {
                 try {
                     if (err)
                         throw err;
-                    res.json(result);
+                    res.json(true);
                 }
                 catch (error) {
                     console.log(error);
@@ -43,13 +51,12 @@ class TerminalController {
     agregarInventario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const data = req.body;
-            console.log(data);
             const sql = "Insert into INVENTARIO (Cantidad, Id_Tienda, Id_Terminal) VALUES (?,?,?)";
             yield database_1.default.query(sql, [data.CANTIDAD, data.ID_TIENDA, data.ID_TERMINAL], (err, result) => {
                 try {
                     if (err)
                         throw err;
-                    res.json(result);
+                    res.json(true);
                 }
                 catch (error) {
                     console.log(error);
@@ -72,6 +79,29 @@ class TerminalController {
                     console.log(error);
                 }
             });
+        });
+    }
+    eliminarInventario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            yield database_1.default.query("DELETE from INVENTARIO", (err, result) => {
+                try {
+                    if (err)
+                        throw err;
+                }
+                catch (error) {
+                    console.log(error);
+                }
+            });
+            yield database_1.default.query("ALTER TABLE INVENTARIO AUTO_INCREMENT = 1", (err, result) => {
+                try {
+                    if (err)
+                        throw err;
+                }
+                catch (error) {
+                    console.log(error);
+                }
+            });
+            res.json(true);
         });
     }
     actualizarPayjoy(req, res) {

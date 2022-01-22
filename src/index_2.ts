@@ -16,8 +16,8 @@ class Server{
     }
     config(): void{
         this.app.use(morgan("dev"))
-        this.app.use(express.json({ limit: '10mb' }));
-        this.app.use(express.urlencoded({ limit: '10mb' }))
+        this.app.use(express.json({ limit: '100mb' }));
+        this.app.use(express.urlencoded({ limit: '100mb' }))
         this.app.use(cors())
     }
     routes(): void{

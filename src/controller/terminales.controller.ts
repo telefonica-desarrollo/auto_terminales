@@ -5,8 +5,15 @@ class TerminalController{
     
     //Catalogo de Terminales
     async obtenerTerminales(req: Request, res: Response){
+        console.log("Obtener Terminales");
+        
         await con.query("Select * from TERMINALES", (err, result, fields) => {
-            res.json(result)
+            try {
+                if(err) throw err
+                res.json(result)
+            } catch (error) {
+                console.log(error);
+            }
         });
     }
     async agregarTerminal(req: Request, res: Response){
@@ -17,7 +24,7 @@ class TerminalController{
         await con.query(sql, [data.SKU, data.MODELO, data.MARCA, data.PAYJOY], (err, result) => {
             try {
                 if(err) throw err
-                res.json(result)
+                res.json(true)
             } catch (error) {
                 console.log(error);
             }
@@ -27,13 +34,12 @@ class TerminalController{
 
     async agregarInventario(req: Request, res: Response){
         const data: any = req.body;
-        console.log(data)
 
-        const sql= "Insert into INVENTARIO (Cantidad, Id_Tienda, Id_Terminal) VALUES (?,?,?)"
-        await con.query(sql, [data.CANTIDAD, data.ID_TIENDA, data. ID_TERMINAL], (err, result) => {
+        const sql = "Insert into INVENTARIO (Cantidad, Id_Tienda, Id_Terminal) VALUES (?,?,?)"
+        await con.query(sql, [data.CANTIDAD, data.ID_TIENDA, data.ID_TERMINAL], (err, result) => {
             try {
                 if(err) throw err
-                res.json(result)
+                res.json(true)
             } catch (error) {
                 console.log(error);
             }
@@ -55,6 +61,23 @@ class TerminalController{
     
     
     
+    }
+    async eliminarInventario(req: Request, res:Response){
+        await con.query("DELETE from INVENTARIO", (err, result) => {
+            try {
+                if(err) throw err
+            } catch (error) {
+                console.log(error);
+            }
+        })
+        await con.query("ALTER TABLE INVENTARIO AUTO_INCREMENT = 1", (err,result)=>{
+            try {
+                if(err) throw err
+            } catch (error) {
+                console.log(error);
+            }
+        })
+        res.json(true)
     }
 
 

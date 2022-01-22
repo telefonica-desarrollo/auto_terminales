@@ -17,7 +17,6 @@ const database_1 = __importDefault(require("../database"));
 class PromocionController {
     obtenerPromocionesPrepago(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            npm;
             const data = req.body;
             const sql = "Select * FROM PROMOCIONES_PREPAGO where Fecha_Inicio <= ? && Fecha_Final >= ?;";
             yield database_1.default.query(sql, [data.FECHA, data.FECHA], (err, result, fields) => {
@@ -54,9 +53,9 @@ class PromocionController {
             const data = req.body;
             const Fecha_Inicio = new Date(data.FECHA_INICIO).toISOString().slice(0, 10).replace('T', ' ');
             const Fecha_Final = new Date(data.FECHA_FINAL).toISOString().slice(0, 10).replace('T', ' ');
-            console.log(Fecha_Inicio);
-            const sql = "Insert into PROMOCIONES_PREPAGO (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,1,?,?)";
-            yield database_1.default.query(sql, [data.PVP, data.DESCUENTO, Fecha_Inicio, Fecha_Final], (err, result) => {
+            console.log(data);
+            const sql = "Insert into PROMOCIONES_PREPAGO (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,?,?,?)";
+            yield database_1.default.query(sql, [data.PVP, data.DESCUENTO, data.ID_TERMINAL, Fecha_Inicio, Fecha_Final], (err, result) => {
                 try {
                     if (err)
                         throw err;
@@ -74,8 +73,8 @@ class PromocionController {
             const Fecha_Inicio = new Date(data.FECHA_INICIO).toISOString().slice(0, 10).replace('T', ' ');
             const Fecha_Final = new Date(data.FECHA_FINAL).toISOString().slice(0, 10).replace('T', ' ');
             console.log(Fecha_Inicio);
-            const sql = "Insert into PROMOCIONES_POSPAGO (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,1,?,?)";
-            yield database_1.default.query(sql, [data.PVP, data.DESCUENTO, Fecha_Inicio, Fecha_Final], (err, result) => {
+            const sql = "Insert into PROMOCIONES_POSPAGO (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,?,?,?)";
+            yield database_1.default.query(sql, [data.PVP, data.DESCUENTO, data.ID_TERMINAL, Fecha_Inicio, Fecha_Final], (err, result) => {
                 try {
                     if (err)
                         throw err;
@@ -93,8 +92,8 @@ class PromocionController {
             const Fecha_Inicio = new Date(data.FECHA_INICIO).toISOString().slice(0, 10).replace('T', ' ');
             const Fecha_Final = new Date(data.FECHA_FINAL).toISOString().slice(0, 10).replace('T', ' ');
             console.log(Fecha_Inicio);
-            const sql = "Insert into PROMOCIONES_RENOVACION (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,1,?,?)";
-            yield database_1.default.query(sql, [data.PVP, data.DESCUENTO, Fecha_Inicio, Fecha_Final], (err, result) => {
+            const sql = "Insert into PROMOCIONES_RENOVACION (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,?,?,?)";
+            yield database_1.default.query(sql, [data.PVP, data.DESCUENTO, data.ID_TERMINAL, Fecha_Inicio, Fecha_Final], (err, result) => {
                 try {
                     if (err)
                         throw err;

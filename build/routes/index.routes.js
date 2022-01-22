@@ -25,6 +25,9 @@ class IndexRoutes {
         //Terminales
         this.router.get("/obtener/terminales", terminales_controller_1.terminalController.obtenerTerminales);
         this.router.post("/agregar/terminal", terminales_controller_1.terminalController.agregarTerminal);
+        this.router.post("/obtener/inventario", terminales_controller_1.terminalController.obtenerInventario);
+        this.router.post("/agregar/inventario", terminales_controller_1.terminalController.agregarInventario);
+        this.router.delete("/eliminar/inventario", terminales_controller_1.terminalController.eliminarInventario);
         //Promociones
         this.router.post("/obtener/promociones/prepago", promociones_controller_1.promocionController.obtenerPromocionesPrepago);
         this.router.post("/obtener/promociones/pospago", promociones_controller_1.promocionController.obtenerPromocionesPospago);

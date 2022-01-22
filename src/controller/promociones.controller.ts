@@ -3,7 +3,7 @@ import con from "../database"
 
 class PromocionController{
     
-    async obtenerPromocionesPrepago(req: Request, res: Response){npm
+    async obtenerPromocionesPrepago(req: Request, res: Response){
         const data: any = req.body;
 
         const sql = "Select * FROM PROMOCIONES_PREPAGO where Fecha_Inicio <= ? && Fecha_Final >= ?;"
@@ -36,10 +36,10 @@ class PromocionController{
         const data: any = req.body;
         const Fecha_Inicio = new Date(data.FECHA_INICIO).toISOString().slice(0,10).replace('T', ' ');
         const Fecha_Final = new Date(data.FECHA_FINAL).toISOString().slice(0,10).replace('T', ' ');
-        console.log(Fecha_Inicio);
-        const sql = "Insert into PROMOCIONES_PREPAGO (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,1,?,?)"
+        console.log(data);
+        const sql = "Insert into PROMOCIONES_PREPAGO (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,?,?,?)"
 
-        await con.query(sql, [data.PVP, data.DESCUENTO, Fecha_Inicio, Fecha_Final],
+        await con.query(sql, [data.PVP, data.DESCUENTO, data.ID_TERMINAL,  Fecha_Inicio, Fecha_Final],
              (err, result) => {
                  try {
                      if(err) throw err
@@ -54,11 +54,11 @@ class PromocionController{
         const Fecha_Inicio = new Date(data.FECHA_INICIO).toISOString().slice(0,10).replace('T', ' ');
         const Fecha_Final = new Date(data.FECHA_FINAL).toISOString().slice(0,10).replace('T', ' ');
         console.log(Fecha_Inicio);
-        const sql = "Insert into PROMOCIONES_POSPAGO (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,1,?,?)"
+        const sql = "Insert into PROMOCIONES_POSPAGO (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,?,?,?)"
 
         
 
-        await con.query(sql, [data.PVP, data.DESCUENTO, Fecha_Inicio, Fecha_Final],
+        await con.query(sql, [data.PVP, data.DESCUENTO, data.ID_TERMINAL, Fecha_Inicio, Fecha_Final],
              (err, result) => {
                  try {
                      if(err) throw err
@@ -73,11 +73,11 @@ class PromocionController{
         const Fecha_Inicio = new Date(data.FECHA_INICIO).toISOString().slice(0,10).replace('T', ' ');
         const Fecha_Final = new Date(data.FECHA_FINAL).toISOString().slice(0,10).replace('T', ' ');
         console.log(Fecha_Inicio);
-        const sql = "Insert into PROMOCIONES_RENOVACION (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,1,?,?)"
+        const sql = "Insert into PROMOCIONES_RENOVACION (Pvp, Descuento, Id_Terminal, Fecha_Inicio, Fecha_Final) values (?,?,?,?,?)"
 
         
 
-        await con.query(sql, [data.PVP, data.DESCUENTO, Fecha_Inicio, Fecha_Final],
+        await con.query(sql, [data.PVP, data.DESCUENTO, data.ID_TERMINAL, Fecha_Inicio, Fecha_Final],
              (err, result) => {
                  try {
                      if(err) throw err
